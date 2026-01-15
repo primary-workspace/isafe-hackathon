@@ -444,7 +444,7 @@ body {
 /* Feature Grid */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
 }
 
@@ -1022,16 +1022,38 @@ body {
   white-space: pre-wrap;
 }
 
+.explanation-text strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
 /* Gemini Card */
 .gemini-card {
-  background: rgba(22, 163, 74, 0.02);
-  border: 1px solid rgba(22, 163, 74, 0.2);
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.03) 0%, rgba(22, 163, 74, 0.01) 100%);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.08);
 }
 
 .gemini-card .card-icon {
-  background: rgba(22, 163, 74, 0.1);
-  border-color: rgba(22, 163, 74, 0.2);
+  background: rgba(22, 163, 74, 0.12);
+  border-color: rgba(22, 163, 74, 0.25);
   color: var(--accent-secondary);
+  font-size: 18px;
+}
+
+.gemini-card .explanation-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+.gemini-card .explanation-text strong {
+  font-weight: 600;
+  color: var(--text-primary);
+  background: rgba(22, 163, 74, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin: 0 1px;
 }
 
 .gemini-badge {
@@ -1413,6 +1435,10 @@ body {
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-8);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .steps-container {

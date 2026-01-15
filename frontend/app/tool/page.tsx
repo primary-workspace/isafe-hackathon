@@ -8,6 +8,27 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 type Modality = 'image' | 'video' | 'audio' | 'text'
 
+// Format Gemini's markdown-style response
+const formatGeminiText = (text: string) => {
+  if (!text) return null
+  
+  // Split by ** markers and create formatted output
+  const parts = text.split(/\*\*(.*?)\*\*/g)
+  return (
+    <>
+      {parts.map((part, i) => 
+        i % 2 === 0 ? (
+          <span key={i}>{part}</span>
+        ) : (
+          <strong key={i} style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{part}</strong>
+        )
+      )}
+    </>
+  )
+}
+
+type Modality = 'image' | 'video' | 'audio' | 'text'
+
 interface Signal {
   signal: string
   description: string
@@ -358,7 +379,7 @@ export default function ToolPage() {
                       </span>
                     )}
                   </div>
-                  <p className="explanation-text">{result.gemini_analysis}</p>
+                  <div className="explanation-text">{formatGeminiText(result.gemini_analysis)}</div>
                 </div>
               )}
 
